@@ -1,19 +1,17 @@
-'use strict';
+"use strict";
 
-import mongoose from 'mongoose'
-import remarkData from '../../InitData/remark'
-const Schema  = mongoose.Schema;
+import mongoose from "mongoose";
+import remarkData from "../../InitData/remark";
+const Schema = mongoose.Schema;
 
 const remarkSchema = new Schema({
-	remarks: [],
-})
+  remarks: [],
+});
 
-const Remark = mongoose.model('Remark', remarkSchema);
+const Remark = mongoose.model("Remark", remarkSchema);
 
-Remark.findOne((err, data) => {
-	if(!data){
-		Remark.create(remarkData)
-	}
-})
+Remark.findOne().then(() => {
+  Remark.create(remarkData);
+});
 
-export default Remark
+export default Remark;

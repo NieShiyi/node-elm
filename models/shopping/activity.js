@@ -18,12 +18,10 @@ activitySchema.index({index: 1});
 
 const Activity = mongoose.model('Activity', activitySchema);
 
-Activity.findOne((err, data) => {
-	if (!data) {
-		activityData.forEach(item => {
-			Activity.create(item);
-		})
-	}
+Activity.findOne().then(()=>{
+	activityData.forEach(item => {
+		Activity.create(item);
+	})
 })
 
 export default Activity
